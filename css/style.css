@@ -1467,7 +1467,6 @@ pre .javascript .function {
   font-weight: 600;
   font-size: 0.9rem;
   font-family: "Source Code Pro", consolas, Menlo;
-  color: var(--text-color-3);
 }
 .highlight-container .code-tools-box .tool {
   -moz-user-select: none;
@@ -1478,7 +1477,6 @@ pre .javascript .function {
 }
 .highlight-container .code-tools-box .tool i {
   font-size: 0.9rem;
-  color: var(--text-color-3);
 }
 .highlight-container .code-tools-box .fold {
   padding: 0 0.4rem 0 0.2rem;
@@ -2380,28 +2378,6 @@ figure.highlight .shrink-line:hover::before {
   transform: scale(0.78);
   transform-origin: left;
 }
-.header-wrapper .header-content .left .logo-image {
-  flex-shrink: 0;
-  width: 2.68rem;
-  height: 2.68rem;
-  margin-right: 0.5rem;
-}
-@media (max-width: 800px) {
-  .header-wrapper .header-content .left .logo-image {
-    width: 2.412rem;
-    height: 2.412rem;
-  }
-}
-@media (max-width: 500px) {
-  .header-wrapper .header-content .left .logo-image {
-    width: 2.144rem;
-    height: 2.144rem;
-  }
-}
-.header-wrapper .header-content .left .logo-image img {
-  width: 100%;
-  border-radius: 0.4rem;
-}
 .header-wrapper .header-content .left .site-name {
   color: var(--text-color-1);
   font-weight: 600;
@@ -3009,7 +2985,7 @@ figure.highlight .shrink-line:hover::before {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background-image: url("/xiyuzeng.github.io/images/bg.svg");
+  background-image: url("/images/bg.svg");
   background-position-x: center;
   background-position-y: center;
   background-size: cover;
@@ -3017,7 +2993,7 @@ figure.highlight .shrink-line:hover::before {
   background-repeat-y: no-repeat;
 }
 .dark-mode .first-screen-container {
-  background-image: url("/xiyuzeng.github.io/images/bg.svg");
+  background-image: url("/images/bg.svg");
 }
 .first-screen-container .first-screen-content {
   display: flex;
