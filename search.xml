@@ -1,21 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2024/04/01/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <title>GAMES101-课程2</title>
+    <url>/2024/04/01/GAMES101-%E8%AF%BE%E7%A8%8B2/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>GAMES101</category>
+      </categories>
+      <tags>
+        <tag>Lesson2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GAMES101作业1</title>
+    <url>/2024/04/01/GAMES101%E4%BD%9C%E4%B8%9A1/</url>
+    <content><![CDATA[<p><a href="http://games-cn.org/forums/topic/graphics-intro-hw1/">作业1下载链接</a><br><a href="http://games-cn.org/forums/topic/graphics-intro-hw1/">作业1ans</a></p>
+<h2 id="作业描述"><a href="#作业描述" class="headerlink" title="作业描述"></a>作业描述</h2><p>本次作业的任务是填写一个旋转矩阵和一个透视投影矩阵。给定三维下三个点v0(2.0, 0.0,−2.0), v1(0.0, 2.0,−2.0), v2(−2.0, 0.0,−2.0), 你需要将这三个点的坐标变换为屏幕坐标并在屏幕上绘制出对应的线框三角(在代码框架中，我们已经提供了draw_triangle 函数，所以你只需要去构建变换矩阵即可)。简而言之，我们需要进行模型、视图、投影、视口等变换来将三角形显示在屏幕上。在提供的代码框架中，我们留下了模型变换和投影变换的部分给你去完成。</p>
+<p>以下是你需要在main.cpp 中修改的函数（请不要修改任何的函数名和其他已经填写好的函数，并保证提交的代码是已经完成且能运行的）：</p>
+<ul>
+<li><strong>get_model_matrix(float rotation_angle)</strong>: 逐个元素地构建模型变换矩阵并返回该矩阵。在此函数中，你只需要实现三维中绕z 轴旋转的变换矩阵，而不用处理平移与缩放。</li>
+<li><strong>get_projection_matrix(float eye_fov, float aspect_ratio, float zNear, float zFar)</strong>: 使用给定的参数逐个元素地构建透视投影矩阵并返回该矩阵。zNear是近平面到视点的距离，zFar是远平面到视点的距离。</li>
+<li><strong>[Optional] main()</strong>: 自行补充你所需的其他操作。</li>
+</ul>
+<p>当你在上述函数中正确地构建了模型与投影矩阵，光栅化器会创建一个窗口显示出线框三角形。由于光栅化器是逐帧渲染与绘制的，所以你可以使用A和D 键去将该三角形绕z 轴旋转(此处有一项提高作业，将三角形绕任意过原点的轴旋转)。当你按下Esc 键时，窗口会关闭且程序终止。<br> <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;eigen3/Eigen/Core&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;eigen3/Eigen/Dense&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Eigen;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">Vector3f  <span class="title">p</span><span class="params">(<span class="number">2.0</span>,<span class="number">1.0</span>)</span>,Pc</span>;</span><br><span class="line">    <span class="type">float</span> a=<span class="built_in">cos</span>(<span class="number">45</span>/<span class="number">180.0</span>*<span class="built_in">acos</span>(<span class="number">-1</span>)),b=<span class="built_in">sin</span>(<span class="number">45</span>/<span class="number">180.0</span>*<span class="built_in">acos</span>(<span class="number">-1</span>));</span><br><span class="line">    Matrix3f R,M;</span><br><span class="line">    R&lt;&lt;a,-b,<span class="number">0</span>,b,a,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>;</span><br><span class="line">    M&lt;&lt;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>;</span><br><span class="line">    Pc=M*R*p;</span><br><span class="line">    cout&lt;&lt;p&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;Pc&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>代码完成后就是编译过程，打开终端依次输入一下命令：<br> <figure class="highlight console"><table><tr><td class="code"><pre><span class="line">mkdir build </span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line">./Transformation</span><br></pre></td></tr></table></figure></p>
 ]]></content>
+      <categories>
+        <category>GAMES101</category>
+        <category>assignment</category>
+      </categories>
+      <tags>
+        <tag>Lesson1</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GAMES101作业0</title>
+    <url>/2024/04/01/GAMES101%E4%BD%9C%E4%B8%9A0/</url>
+    <content><![CDATA[<h1 id="GAMES101作业0——虚拟环境配置以及二维坐标变换"><a href="#GAMES101作业0——虚拟环境配置以及二维坐标变换" class="headerlink" title="GAMES101作业0——虚拟环境配置以及二维坐标变换"></a>GAMES101作业0——虚拟环境配置以及二维坐标变换</h1><p><a href="http://games-cn.org/forums/topic/graphics-intro-hw0/">作业0下载链接</a><br><a href="http://games-cn.org/forums/topic/graphics-intro-hw0/">作业0ans</a></p>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><h3 id="安装虚拟机"><a href="#安装虚拟机" class="headerlink" title="安装虚拟机"></a>安装虚拟机</h3><p>本课程使用的是 <strong>Oracle VirtualBox</strong>虚拟机，下载链接如下：</p>
+<p><strong>Windows系统</strong>：<a href="https://download.virtualbox.org/virtualbox/6.1.4/VirtualBox-6.1.4-136177-Win.exe">https://download.virtualbox.org/virtualbox/6.1.4/VirtualBox-6.1.4-136177-Win.exe</a></p>
+<p><strong>Mac OS系统</strong>： <a href="https://download.virtualbox.org/virtualbox/6.1.4/VirtualBox-6.1.4-136177-OSX.dmg">https://download.virtualbox.org/virtualbox/6.1.4/VirtualBox-6.1.4-136177-OSX.dmg</a></p>
+<p><strong>Linux内核的系统</strong>： <a href="https://www.virtualbox.org/wiki/Linux_Downloads%EF%BC%8C">https://www.virtualbox.org/wiki/Linux_Downloads，</a></p>
+<p>安装直接按照指示进行完成安装</p>
+<h3 id="安装虚拟机-1"><a href="#安装虚拟机-1" class="headerlink" title="安装虚拟机"></a>安装虚拟机</h3><p>虚拟磁盘的下载地址为：<a href="https://drive.google.com/drive/folders10Z_GCxwN-k3GvdbDj0nzh8dx6BRPqfk2?usp=sharing">https://drive.google.com/drive/folders10Z_GCxwN-k3GvdbDj0nzh8dx6BRPqfk2?usp=sharing</a> ,下载完成后得到GAMES101_Ubuntu 18.04.2(64bit).rar，将其解压后得到虚拟硬盘文件GAMES101_Ubuntu 18.04.2 (64bit).vdi。</p>
+<h3 id="配置虚拟机"><a href="#配置虚拟机" class="headerlink" title="配置虚拟机"></a>配置虚拟机</h3><p>打开Virtual Box，点击新建，设置类型为Linux，版本为Ubuntu-64 bit，<br>建议设置虚拟机的内存大小为2GB，然后选择使用已有的虚拟硬盘文件，设置为<br>之前解压得到的GAMES101_Ubuntu 18.04.2 (64bit).vdi，最后点击创建就<br>完成了虚拟机的配置工作。<br><img src="https://s2.loli.net/2023/05/30/X6At8BYSba7jNI9.png" alt="配置虚拟机"><br>之后就可以使用创建好的虚拟机了，选中刚刚创建好的虚拟机，点击右侧上方的启动按钮就可以打开虚拟机了，Ubuntu 系统的密码为<strong>Ilovegraphics</strong>。<br><font color=Red>注：可能会出现打不开虚拟机，错误原因为 <strong>Failed to get device handle and&#x2F;or partition ID</strong> </font> <a href="https://blog.csdn.net/weixin_42094764/article/details/125101332">解决方法</a></p>
+<h3 id="安装Guest-Additions"><a href="#安装Guest-Additions" class="headerlink" title="安装Guest Additions"></a>安装Guest Additions</h3><p>进入系统后，点击上方菜单的设备，点击安装增强功能，如下图所示。安装完成后，重启虚拟机系统就完成了Guest Additions 的安装。<br><img src="https://s2.loli.net/2023/05/30/YU1BOHVrWD8IKsp.png" alt="安装Guest Additions"></p>
+<h3 id="作业框架的传输及编辑"><a href="#作业框架的传输及编辑" class="headerlink" title="作业框架的传输及编辑"></a>作业框架的传输及编辑</h3><p>作业框架的导入和导出有很多种方式，这里只提一种。当你在你的主机上下载好作业框架后，直接将其拖进虚拟机系统里。这里需要开启Virtual Box 的拖放功能：进入虚拟机系统后，点击上方菜单的设备，将拖放功能设置为双向即可。<br><img src="https://s2.loli.net/2023/05/30/URnYubAw7DNpIKk.png" alt="双向拖放设置"><br><font color=Red>注：可能会出现不能实现双向拖拽 </font><a href="https://blog.csdn.net/Dryhten/article/details/115049664">解决方法</a><br>导入作业框架后，可以使用Visual Studio Code 来查看和编辑。右键作业框<br>架的文件夹，选择使用其他应用来打开，选择Visual Studio Code。</p>
+<h2 id="作业讲解"><a href="#作业讲解" class="headerlink" title="作业讲解"></a>作业讲解</h2><p>完成以上配置后终于可以开始作业的编写了，给定一个点P&#x3D;(2,1), 将该点绕原点先逆时针旋转45◦，再平移(1,2), 计算出变换后点的坐标（要求用齐次坐标进行计算）。</p>
+ <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;eigen3/Eigen/Core&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;eigen3/Eigen/Dense&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Eigen;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">Vector3f  <span class="title">p</span><span class="params">(<span class="number">2.0</span>,<span class="number">1.0</span>)</span>,Pc</span>;</span><br><span class="line">    <span class="type">float</span> a=<span class="built_in">cos</span>(<span class="number">45</span>/<span class="number">180.0</span>*<span class="built_in">acos</span>(<span class="number">-1</span>)),b=<span class="built_in">sin</span>(<span class="number">45</span>/<span class="number">180.0</span>*<span class="built_in">acos</span>(<span class="number">-1</span>));</span><br><span class="line">    Matrix3f R,M;</span><br><span class="line">    R&lt;&lt;a,-b,<span class="number">0</span>,b,a,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>;</span><br><span class="line">    M&lt;&lt;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>;</span><br><span class="line">    Pc=M*R*p;</span><br><span class="line">    cout&lt;&lt;p&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;Pc&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码完成后就是编译过程，打开终端依次输入一下命令：<br> <figure class="highlight console"><table><tr><td class="code"><pre><span class="line">mkdir build </span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line">./Transformation</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>GAMES101</category>
+        <category>assignment</category>
+      </categories>
+      <tags>
+        <tag>Lesson0</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>非遗Web可视化平台</title>
+    <url>/2024/04/01/%E9%9D%9E%E9%81%97/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>projects</category>
+      </categories>
+      <tags>
+        <tag>projects</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>背包问题</title>
+    <url>/2024/04/01/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+      </tags>
   </entry>
 </search>

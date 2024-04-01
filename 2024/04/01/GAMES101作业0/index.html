@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang="zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>GAMES101作业0 | Yukiの移动城堡</title><meta name="author" content="Yuki Zeng"><meta name="copyright" content="Yuki Zeng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="GAMES101作业0——虚拟环境配置以及二维坐标变换作业0下载链接作业0ans 环境配置安装虚拟机本课程使用的是 Oracle VirtualBox虚拟机，下载链接如下： Windows系统：https:&#x2F;&#x2F;download.virtualbox.org&#x2F;virtualbox&#x2F;6.1.4&#x2F;VirtualBox-6.1.4-136177-Win.exe Mac OS系统： https:&#x2F;&#x2F;down">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GAMES101作业0">
+<meta property="og:url" content="https://xiyuzeng.github.io/2024/04/01/GAMES101%E4%BD%9C%E4%B8%9A0/index.html">
+<meta property="og:site_name" content="Yukiの移动城堡">
+<meta property="og:description" content="GAMES101作业0——虚拟环境配置以及二维坐标变换作业0下载链接作业0ans 环境配置安装虚拟机本课程使用的是 Oracle VirtualBox虚拟机，下载链接如下： Windows系统：https:&#x2F;&#x2F;download.virtualbox.org&#x2F;virtualbox&#x2F;6.1.4&#x2F;VirtualBox-6.1.4-136177-Win.exe Mac OS系统： https:&#x2F;&#x2F;down">
+<meta property="og:locale">
+<meta property="og:image" content="https://s2.loli.net/2023/05/30/xsKk1ZgSMYrmJod.png">
+<meta property="article:published_time" content="2024-04-01T15:10:14.661Z">
+<meta property="article:modified_time" content="2024-04-01T15:12:43.792Z">
+<meta property="article:author" content="Yuki Zeng">
+<meta property="article:tag" content="Lesson0">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/05/30/xsKk1ZgSMYrmJod.png"><link rel="shortcut icon" href="/img/y.png"><link rel="canonical" href="https://xiyuzeng.github.io/2024/04/01/GAMES101%E4%BD%9C%E4%B8%9A0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'GAMES101作业0',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-01 23:12:43'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://s2.loli.net/2023/05/30/xsKk1ZgSMYrmJod.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Yukiの移动城堡"><span class="site-name">Yukiの移动城堡</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">GAMES101作业0</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-04-01T15:10:14.661Z" title="Created 2024-04-01 23:10:14">2024-04-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-04-01T15:12:43.792Z" title="Updated 2024-04-01 23:12:43">2024-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/GAMES101/">GAMES101</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/GAMES101/assignment/">assignment</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="GAMES101作业0"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="GAMES101作业0——虚拟环境配置以及二维坐标变换"><a href="#GAMES101作业0——虚拟环境配置以及二维坐标变换" class="headerlink" title="GAMES101作业0——虚拟环境配置以及二维坐标变换"></a>GAMES101作业0——虚拟环境配置以及二维坐标变换</h1><p><a target="_blank" rel="noopener" href="http://games-cn.org/forums/topic/graphics-intro-hw0/">作业0下载链接</a><br><a target="_blank" rel="noopener" href="http://games-cn.org/forums/topic/graphics-intro-hw0/">作业0ans</a></p>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><h3 id="安装虚拟机"><a href="#安装虚拟机" class="headerlink" title="安装虚拟机"></a>安装虚拟机</h3><p>本课程使用的是 <strong>Oracle VirtualBox</strong>虚拟机，下载链接如下：</p>
+<p><strong>Windows系统</strong>：<a target="_blank" rel="noopener" href="https://download.virtualbox.org/virtualbox/6.1.4/VirtualBox-6.1.4-136177-Win.exe">https://download.virtualbox.org/virtualbox/6.1.4/VirtualBox-6.1.4-136177-Win.exe</a></p>
+<p><strong>Mac OS系统</strong>： <a target="_blank" rel="noopener" href="https://download.virtualbox.org/virtualbox/6.1.4/VirtualBox-6.1.4-136177-OSX.dmg">https://download.virtualbox.org/virtualbox/6.1.4/VirtualBox-6.1.4-136177-OSX.dmg</a></p>
+<p><strong>Linux内核的系统</strong>： <a target="_blank" rel="noopener" href="https://www.virtualbox.org/wiki/Linux_Downloads%EF%BC%8C">https://www.virtualbox.org/wiki/Linux_Downloads，</a></p>
+<p>安装直接按照指示进行完成安装</p>
+<h3 id="安装虚拟机-1"><a href="#安装虚拟机-1" class="headerlink" title="安装虚拟机"></a>安装虚拟机</h3><p>虚拟磁盘的下载地址为：<a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders10Z_GCxwN-k3GvdbDj0nzh8dx6BRPqfk2?usp=sharing">https://drive.google.com/drive/folders10Z_GCxwN-k3GvdbDj0nzh8dx6BRPqfk2?usp=sharing</a> ,下载完成后得到GAMES101_Ubuntu 18.04.2(64bit).rar，将其解压后得到虚拟硬盘文件GAMES101_Ubuntu 18.04.2 (64bit).vdi。</p>
+<h3 id="配置虚拟机"><a href="#配置虚拟机" class="headerlink" title="配置虚拟机"></a>配置虚拟机</h3><p>打开Virtual Box，点击新建，设置类型为Linux，版本为Ubuntu-64 bit，<br>建议设置虚拟机的内存大小为2GB，然后选择使用已有的虚拟硬盘文件，设置为<br>之前解压得到的GAMES101_Ubuntu 18.04.2 (64bit).vdi，最后点击创建就<br>完成了虚拟机的配置工作。<br><img src="https://s2.loli.net/2023/05/30/X6At8BYSba7jNI9.png" alt="配置虚拟机"><br>之后就可以使用创建好的虚拟机了，选中刚刚创建好的虚拟机，点击右侧上方的启动按钮就可以打开虚拟机了，Ubuntu 系统的密码为<strong>Ilovegraphics</strong>。<br><font color=Red>注：可能会出现打不开虚拟机，错误原因为 <strong>Failed to get device handle and&#x2F;or partition ID</strong> </font> <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42094764/article/details/125101332">解决方法</a></p>
+<h3 id="安装Guest-Additions"><a href="#安装Guest-Additions" class="headerlink" title="安装Guest Additions"></a>安装Guest Additions</h3><p>进入系统后，点击上方菜单的设备，点击安装增强功能，如下图所示。安装完成后，重启虚拟机系统就完成了Guest Additions 的安装。<br><img src="https://s2.loli.net/2023/05/30/YU1BOHVrWD8IKsp.png" alt="安装Guest Additions"></p>
+<h3 id="作业框架的传输及编辑"><a href="#作业框架的传输及编辑" class="headerlink" title="作业框架的传输及编辑"></a>作业框架的传输及编辑</h3><p>作业框架的导入和导出有很多种方式，这里只提一种。当你在你的主机上下载好作业框架后，直接将其拖进虚拟机系统里。这里需要开启Virtual Box 的拖放功能：进入虚拟机系统后，点击上方菜单的设备，将拖放功能设置为双向即可。<br><img src="https://s2.loli.net/2023/05/30/URnYubAw7DNpIKk.png" alt="双向拖放设置"><br><font color=Red>注：可能会出现不能实现双向拖拽 </font><a target="_blank" rel="noopener" href="https://blog.csdn.net/Dryhten/article/details/115049664">解决方法</a><br>导入作业框架后，可以使用Visual Studio Code 来查看和编辑。右键作业框<br>架的文件夹，选择使用其他应用来打开，选择Visual Studio Code。</p>
+<h2 id="作业讲解"><a href="#作业讲解" class="headerlink" title="作业讲解"></a>作业讲解</h2><p>完成以上配置后终于可以开始作业的编写了，给定一个点P&#x3D;(2,1), 将该点绕原点先逆时针旋转45◦，再平移(1,2), 计算出变换后点的坐标（要求用齐次坐标进行计算）。</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;eigen3/Eigen/Core&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;eigen3/Eigen/Dense&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Eigen;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">Vector3f  <span class="title">p</span><span class="params">(<span class="number">2.0</span>,<span class="number">1.0</span>)</span>,Pc</span>;</span><br><span class="line">    <span class="type">float</span> a=<span class="built_in">cos</span>(<span class="number">45</span>/<span class="number">180.0</span>*<span class="built_in">acos</span>(<span class="number">-1</span>)),b=<span class="built_in">sin</span>(<span class="number">45</span>/<span class="number">180.0</span>*<span class="built_in">acos</span>(<span class="number">-1</span>));</span><br><span class="line">    Matrix3f R,M;</span><br><span class="line">    R&lt;&lt;a,-b,<span class="number">0</span>,b,a,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>;</span><br><span class="line">    M&lt;&lt;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>;</span><br><span class="line">    Pc=M*R*p;</span><br><span class="line">    cout&lt;&lt;p&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;Pc&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码完成后就是编译过程，打开终端依次输入一下命令：<br> <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir build </span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line">./Transformation</span><br></pre></td></tr></table></figure></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://xiyuzeng.github.io">Yuki Zeng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://xiyuzeng.github.io/2024/04/01/GAMES101%E4%BD%9C%E4%B8%9A0/">https://xiyuzeng.github.io/2024/04/01/GAMES101%E4%BD%9C%E4%B8%9A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Lesson0/">Lesson0</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2023/05/30/xsKk1ZgSMYrmJod.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/04/01/GAMES101%E4%BD%9C%E4%B8%9A1/" title="GAMES101作业1"><img class="cover" src="https://s2.loli.net/2023/05/30/xsKk1ZgSMYrmJod.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">GAMES101作业1</div></div></a></div><div class="next-post pull-right"><a href="/2024/04/01/GAMES101-%E8%AF%BE%E7%A8%8B2/" title="GAMES101-课程2"><img class="cover" src="https://s2.loli.net/2023/05/30/gwIsJCfTGlKYe2X.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next</div><div class="next_info">GAMES101-课程2</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Yuki Zeng</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xiyuzeng"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xiyuzeng" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:yukichuang0412@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GAMES101%E4%BD%9C%E4%B8%9A0%E2%80%94%E2%80%94%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E4%BA%8C%E7%BB%B4%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2"><span class="toc-number">1.</span> <span class="toc-text">GAMES101作业0——虚拟环境配置以及二维坐标变换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.</span> <span class="toc-text">环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-number">1.1.1.</span> <span class="toc-text">安装虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA-1"><span class="toc-number">1.1.2.</span> <span class="toc-text">安装虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-number">1.1.3.</span> <span class="toc-text">配置虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Guest-Additions"><span class="toc-number">1.1.4.</span> <span class="toc-text">安装Guest Additions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BC%A0%E8%BE%93%E5%8F%8A%E7%BC%96%E8%BE%91"><span class="toc-number">1.1.5.</span> <span class="toc-text">作业框架的传输及编辑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E8%AE%B2%E8%A7%A3"><span class="toc-number">1.2.</span> <span class="toc-text">作业讲解</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/01/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" title="背包问题">背包问题</a><time datetime="2024-04-01T15:10:33.798Z" title="Created 2024-04-01 23:10:33">2024-04-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/01/GAMES101%E4%BD%9C%E4%B8%9A1/" title="GAMES101作业1"><img src="https://s2.loli.net/2023/05/30/xsKk1ZgSMYrmJod.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GAMES101作业1"/></a><div class="content"><a class="title" href="/2024/04/01/GAMES101%E4%BD%9C%E4%B8%9A1/" title="GAMES101作业1">GAMES101作业1</a><time datetime="2024-04-01T15:10:14.709Z" title="Created 2024-04-01 23:10:14">2024-04-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/01/GAMES101%E4%BD%9C%E4%B8%9A0/" title="GAMES101作业0"><img src="https://s2.loli.net/2023/05/30/xsKk1ZgSMYrmJod.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GAMES101作业0"/></a><div class="content"><a class="title" href="/2024/04/01/GAMES101%E4%BD%9C%E4%B8%9A0/" title="GAMES101作业0">GAMES101作业0</a><time datetime="2024-04-01T15:10:14.661Z" title="Created 2024-04-01 23:10:14">2024-04-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/01/GAMES101-%E8%AF%BE%E7%A8%8B2/" title="GAMES101-课程2"><img src="https://s2.loli.net/2023/05/30/gwIsJCfTGlKYe2X.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GAMES101-课程2"/></a><div class="content"><a class="title" href="/2024/04/01/GAMES101-%E8%AF%BE%E7%A8%8B2/" title="GAMES101-课程2">GAMES101-课程2</a><time datetime="2024-04-01T15:10:14.637Z" title="Created 2024-04-01 23:10:14">2024-04-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/01/%E9%9D%9E%E9%81%97/" title="非遗Web可视化平台">非遗Web可视化平台</a><time datetime="2024-04-01T15:06:00.322Z" title="Created 2024-04-01 23:06:00">2024-04-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Yuki Zeng</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
