@@ -81,4 +81,54 @@
         <tag>动态规划</tag>
       </tags>
   </entry>
+  <entry>
+    <title>时序预测</title>
+    <url>/2024/04/02/%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B/</url>
+    <content><![CDATA[<h2 id="现存问题"><a href="#现存问题" class="headerlink" title="现存问题"></a>现存问题</h2><p>准确预测时序数据具有挑战性</p>
+<h2 id="现有时序建模方法"><a href="#现有时序建模方法" class="headerlink" title="现有时序建模方法"></a>现有时序建模方法</h2><ol>
+<li>马尔科夫假设<br>每次观察都是基于前一个值</li>
+</ol>
+<ul>
+<li>HMM</li>
+<li>动态贝叶斯网络</li>
+<li>卡尔曼滤波</li>
+<li>RIMA， ARIMA</li>
+</ul>
+<ol start="2">
+<li>RNN<br>能发现数据的非线性复杂的长时间关系</li>
+</ol>
+<ul>
+<li>RNN&#x2F;LSTM&#x2F;GRU</li>
+<li>Conv-LSTM….</li>
+</ul>
+<ol start="3">
+<li>Transformer<br>并行建模和捕捉长时间依赖</li>
+</ol>
+<h2 id="时序的特征"><a href="#时序的特征" class="headerlink" title="时序的特征"></a>时序的特征</h2><p>时序序列的统计特征随时间变化，时序从局部上看是服从某一分布，由此时序可以看作是由若干个分布组成。</p>
+<p>时序协方差漂移（Temporal Covariate Shift–TCS）:段内分布一样，段之间分布变化<br><img src="https://s2.loli.net/2024/04/02/ycTrm4Ln79ovJWf.png" alt="TCS"></p>
+<p>方差漂移（Covariate Shift–CS）<br><img src="https://s2.loli.net/2024/04/02/vQk1f4TPYhi7KgH.png" alt="CS"></p>
+<h2 id="AdaRNN：Adaptive-RNNs"><a href="#AdaRNN：Adaptive-RNNs" class="headerlink" title="AdaRNN：Adaptive RNNs"></a>AdaRNN：Adaptive RNNs</h2><ul>
+<li>zhihu: <a href="https://zhuanlan.zhihu.com/p/398036372">https://zhuanlan.zhihu.com/p/398036372</a></li>
+<li>github: <a href="https://github.com/Yang-Qirui/">https://github.com/Yang-Qirui/</a> AdaRNN-for-Battery?tab&#x3D;readme-ov-file</li>
+<li>bilibili: <a href="https://www.bilibili.com/video/BV1Gh411B7rj/?vd_source=78b60f07b8ecb9de4ed498a7f3d7190c">https://www.bilibili.com/video/BV1Gh411B7rj/?vd_source=78b60f07b8ecb9de4ed498a7f3d7190c</a></li>
+</ul>
+<p><img src="https://s2.loli.net/2024/04/02/bMOw81qU7ucJQe5.png" alt="AdaRNN"></p>
+<ul>
+<li>TDC<br><img src="https://s2.loli.net/2024/04/02/RNiz9BQmbZ1OYxr.png" alt="TDC"></li>
+</ul>
+<ul>
+<li>找到K个最不相似的段，这是应为可以多样化分布信息，提升模型泛化能力</li>
+<li>优化目标：最大化不相似性</li>
+</ul>
+<ul>
+<li>TDM<br><img src="https://s2.loli.net/2024/04/02/YBIKapC7gndc6zw.png" alt="TDM"><br><img src="https://s2.loli.net/2024/04/02/W1GjKPbMioxOHEI.png" alt="TDM(cont.)"><br><img src="https://s2.loli.net/2024/04/02/6VhxrZz1CBpPwEm.png" alt="weight matrix"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>time-series</category>
+      </categories>
+      <tags>
+        <tag>time-series</tag>
+      </tags>
+  </entry>
 </search>
