@@ -8,7 +8,7 @@
         <category>GAMES101</category>
       </categories>
       <tags>
-        <tag>Lesson2</tag>
+        <tag>GAMES101</tag>
       </tags>
   </entry>
   <entry>
@@ -113,6 +113,7 @@
 <li>bilibili: <a href="https://www.bilibili.com/video/BV1Gh411B7rj/?vd_source=78b60f07b8ecb9de4ed498a7f3d7190c">https://www.bilibili.com/video/BV1Gh411B7rj/?vd_source=78b60f07b8ecb9de4ed498a7f3d7190c</a></li>
 </ul>
 <p><img src="https://s2.loli.net/2024/04/02/bMOw81qU7ucJQe5.png" alt="AdaRNN"></p>
+<p><a href="AdaRNN.md">AdaRNN笔记</a></p>
 <ul>
 <li>TDC<br><img src="https://s2.loli.net/2024/04/02/RNiz9BQmbZ1OYxr.png" alt="TDC"></li>
 </ul>
@@ -155,5 +156,25 @@
       <tags>
         <tag>string</tag>
       </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2024/04/03/AdaRNN/</url>
+    <content><![CDATA[<hr>
+<pre><code>title: AdaRNN笔记 
+tags: AdaRNN
+categories: 
+- time-series 
+</code></pre>
+<hr>
+<h1 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h1><h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><p>数据集：<a href="https://box.nju.edu.cn/f/2239259e06dd4f4cbf64/?dl=1">https://box.nju.edu.cn/f/2239259e06dd4f4cbf64/?dl=1</a></p>
+<p>该数据集是空气质量数据集包含 2013&#x2F;3 至 2017&#x2F;2 期间从北京 12 个站点收集的每小时空气质量信息。代码使用数据是选择了4个观测站 (Dongsi, Tiantan, Nongzhanguan, and Dingling) 和6个特征 (PM2.5, PM10, S02, NO2, CO, and O3)。由于存在一些缺失数据，我们只需使用平均值来填补空缺。然后，在将数据集输入网络之前对其进行归一化处理，以便将所有特征缩放到相同的范围内。这个过程是通过最大最小归一化来完成的，数据范围介于 0 和 1 之间。</p>
+<p>生成的 .pkl 文件包含三个序列：”特征”、”标签 “和 “标签调节”。标签 “是指空气质量的分类标签（如优、良、中），在本工作中没有使用，可以忽略。label_reg “指预测值。</p>
+<p>数据模式：TDC和pre_process</p>
+<ul>
+<li>TDC<br>该方法是对时序进行划分，具体代码如下<br><img src="https://s2.loli.net/2024/04/03/waLcI2FY6JysQRg.png" alt="TDC1"><br><img src="https://s2.loli.net/2024/04/03/rsONB9UDZl2HePh.png" alt="TDC2"></li>
+</ul>
+<p>其中<strong>num_domain</strong>是时序的多样性区域个数</p>
+]]></content>
   </entry>
 </search>
