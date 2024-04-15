@@ -277,7 +277,7 @@ categories:
   </entry>
   <entry>
     <title>四则运算</title>
-    <url>/2024/04/12/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%20copy/</url>
+    <url>/2024/04/12/%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97/</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://www.nowcoder.com/practice/9999764a61484d819056f807d2a91f1e?tpId=37&rp=1&ru=/exam/oj/ta&qru=/exam/oj/ta&sourceUrl=/exam/oj/ta?tpId=37&difficulty=&judgeStatus=&tags=&title=&gioEnter=menu">https://www.nowcoder.com/practice/9999764a61484d819056f807d2a91f1e?tpId=37&amp;rp=1&amp;ru=%2Fexam%2Foj%2Fta&amp;qru=%2Fexam%2Foj%2Fta&amp;sourceUrl=%2Fexam%2Foj%2Fta%3FtpId%3D37&amp;difficulty=&amp;judgeStatus=&amp;tags=&amp;title=&amp;gioEnter=menu</a></p>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>判断加减号是操作符还是正负号，使用flag进行判断，出现了数字flag为true，那么其为加减号。当出现为运算符是，flag变为false。如果flag为false那么判断为正负号。</p>
 <p>符号优先级判断，当需要插入的符号优先级大于操作栈顶部的符号那么，那么进行计算直到需要插入的优先级小于等于当前顶部优先级入栈。’(‘为最高优先级，乘除优先级高于加减。</p>
@@ -288,6 +288,42 @@ categories:
       </categories>
       <tags>
         <tag>stack</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>最长公共子序列</title>
+    <url>/2024/04/14/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/</url>
+    <content><![CDATA[<h1 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h1><ul>
+<li><a href="https://leetcode.cn/problems/longest-common-subsequence/description/">https://leetcode.cn/problems/longest-common-subsequence/description/</a></li>
+</ul>
+<h1 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h1><p>参考：<a href="https://programmercarl.com/1143.%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">https://programmercarl.com/1143.%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE</a></p>
+<p>使用动态规划求解，用矩阵int dp[m+1][n+1]表示，其中dp[i][j]表示子串s1.substr(0,i)和子串s2.substr(0,j)最长公共子串长度。</p>
+<p><strong>初始化</strong><br>当子串为空时，其公共长度为0。<br><strong>分析</strong></p>
+<ul>
+<li>s1[i-1]&#x3D;&#x3D;s2[j-1]–&gt;dp[i][j]&#x3D;dp[i-1][j-1]+1;</li>
+<li>s1[i-1]！&#x3D;s2[j-1]–&gt;dp[i][j]&#x3D;max(dp[i - 1][j], dp[i][j - 1]);</li>
+</ul>
+<h1 id="变体题目"><a href="#变体题目" class="headerlink" title="变体题目"></a>变体题目</h1><p><a href="https://www.nowcoder.com/practice/3959837097c7413a961a135d7104c314?tpId=37&tqId=21275&rp=1&ru=/exam/oj/ta&qru=/exam/oj/ta&sourceUrl=/exam/oj/ta?tpId=37&difficulty=3&judgeStatus=undefined&tags=&title=">https://www.nowcoder.com/practice/3959837097c7413a961a135d7104c314?tpId=37&amp;tqId=21275&amp;rp=1&amp;ru=/exam/oj/ta&amp;qru=/exam/oj/ta&amp;sourceUrl=%2Fexam%2Foj%2Fta%3FtpId%3D37&amp;difficulty=3&amp;judgeStatus=undefined&amp;tags=&amp;title=</a></p>
+<p>该题目是求进行最少的替换、插入、删除操作次数所能满足的最长公共子串。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>使用动态规划求解，用矩阵int dp[m+1][n+1]表示，其中dp[i][j]表示子串s1.substr(0,i)和子串s2.substr(0,j)成为公共子串所需要的操作数。</p>
+<p><strong>初始化</strong> 其中一个子串为空时，需要操作的次数为另一个子串长度。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    dp[<span class="number">0</span>][i]=i;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)         </span><br><span class="line">    dp[i][<span class="number">0</span>]=i;</span><br></pre></td></tr></table></figure>
+<p><strong>分析</strong> </p>
+<ul>
+<li>s1[i-1]&#x3D;&#x3D;s2[j-1]:不需要进行任何操作–&gt;dp[i][j]&#x3D;dp[i-1][j-1]; </li>
+<li>s1[i-1]！&#x3D;s2[j-1]:三种操作</li>
+</ul>
+<ul>
+<li>替换操作：dp[i-1][j-1]+1；</li>
+<li>删除操作：dp[i][j-1]+1;</li>
+<li>插入操作：dp[i-1][j]+1;<br>综上：dp[i][j]&#x3D;min(dp[i-1][j-1],min(dp[i-1][j],dp[i][j-1]))+1;</li>
+</ul>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
       </tags>
   </entry>
 </search>
