@@ -61,7 +61,7 @@
     <title>非遗Web可视化平台</title>
     <url>/2024/04/01/%E9%9D%9E%E9%81%97/</url>
     <content><![CDATA[<h2 id="项目概述"><a href="#项目概述" class="headerlink" title="项目概述"></a>项目概述</h2><p>非物质文化遗产面向了普通大众，达到了宣传和保护非物质文化 遗产的目的，同时也为广大非遗爱好者提供学习了解的便捷途径。所 以本系统面向的人群为：广大人民群众、非物质文化遗产爱好者、非 物质文化遗产探索者、非物质文化遗产传承人和有关非物质文化遗产 研究学者等。 对此本系统可以提供向用户直观的展示非物质文化遗 产的综合查询界面，为用户提供地图定位、寻遗等综合查询功能，非 遗分布聚集分析、非遗类别结构分析、气候适宜性非遗分布分析、地 区 GDP 与非遗分布分析等专题图分析，新闻动态、新闻发布、非物 质文化遗产的录入、面积及距离测量、复位、清除要素等辅助功能。</p>
-<h2 id="内容展示"><a href="#内容展示" class="headerlink" title="内容展示"></a>内容展示</h2><p><img src="/img/fy_main.png" alt="主页面"></p>
+<h2 id="内容展示"><a href="#内容展示" class="headerlink" title="内容展示"></a>内容展示</h2><p><img src="/img/fy_main.png" alt="主页面"><br><img src="https://s2.loli.net/2024/04/21/k7X94i6fQ2SRbUh.png" alt="关于我们"><br><img src="https://s2.loli.net/2024/04/21/fFtXuZ4sQRYwA1C.png" alt="数据可视化"><br><img src="https://s2.loli.net/2024/04/21/PYCyOfRKcJlFbak.png" alt="展览馆"><br><img src="https://s2.loli.net/2024/04/21/o4Lgct1HAVZITS8.png" alt="联系我们"><br><img src="https://s2.loli.net/2024/04/21/z8tiDNlRCG7Ogda.png" alt="注册"><br><img src="https://s2.loli.net/2024/04/21/HY7uMl8bdgsPzom.png" alt="登录"><br><img src="https://s2.loli.net/2024/04/21/mXLrAERGa7NqMfy.png" alt="非遗详情馆界面"><br><img src="https://s2.loli.net/2024/04/21/OZ7GxiPrQbyRTEl.png" alt="信息详情"><br><img src="https://s2.loli.net/2024/04/21/pfI8GM31PnR6jk4.png" alt="菜单栏"><br><img src="https://s2.loli.net/2024/04/21/2fP1XckyKiRnsT7.png" alt="搜索"><br><img src="https://s2.loli.net/2024/04/21/vKgI4lwDJGEuC3c.png" alt="综合查询"></p>
 ]]></content>
       <categories>
         <category>projects</category>
@@ -303,7 +303,7 @@ categories:
 <li>s1[i-1]&#x3D;&#x3D;s2[j-1]–&gt;dp[i][j]&#x3D;dp[i-1][j-1]+1;</li>
 <li>s1[i-1]！&#x3D;s2[j-1]–&gt;dp[i][j]&#x3D;max(dp[i - 1][j], dp[i][j - 1]);</li>
 </ul>
-<h1 id="不连续的公共子串：-1"><a href="#不连续的公共子串：-1" class="headerlink" title="不连续的公共子串："></a>不连续的公共子串：</h1><ul>
+<h1 id="连续的公共子串："><a href="#连续的公共子串：" class="headerlink" title="连续的公共子串："></a>连续的公共子串：</h1><ul>
 <li><a href="https://www.nowcoder.com/practice/181a1a71c7574266ad07f9739f791506?tpId=37&tqId=21287&rp=1&ru=/exam/oj/ta&qru=/exam/oj/ta&sourceUrl=/exam/oj/ta?difficulty=3&page=1&pageSize=50&search=&tpId=37&type=37&difficulty=3&judgeStatus=undefined&tags=&title=">https://www.nowcoder.com/practice/181a1a71c7574266ad07f9739f791506?tpId=37&amp;tqId=21287&amp;rp=1&amp;ru=%2Fexam%2Foj%2Fta&amp;qru=%2Fexam%2Foj%2Fta&amp;sourceUrl=%2Fexam%2Foj%2Fta%3Fdifficulty%3D3%26page%3D1%26pageSize%3D50%26search%3D%26tpId%3D37%26type%3D37&amp;difficulty=3&amp;judgeStatus=undefined&amp;tags=&amp;title=</a></li>
 </ul>
 <h1 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h1><p>使用动态规划求解，用矩阵int dp[m+1][n+1]表示，其中dp[i][j]表示子串i结尾的s1和子串j结尾的s2连续的最长公共子串长度。<br><strong>初始化</strong> 当子串为空时，其公共长度为0。<br><strong>分析</strong> </p>
@@ -380,6 +380,39 @@ categories:
       <categories>
         <category>algorithm</category>
         <category>字符串匹配</category>
+      </categories>
+      <tags>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>整数划分</title>
+    <url>/2024/04/22/%E6%95%B4%E6%95%B0%E5%88%92%E5%88%86/</url>
+    <content><![CDATA[<h1 id="整数划分"><a href="#整数划分" class="headerlink" title="整数划分"></a>整数划分</h1><p>对于任意一个正整数n，它可以表示为多个其他正整数相加。例如:  6 &#x3D; 6 &#x3D; 5 + 1 &#x3D; 4 + 2 &#x3D; 4 + 1 + 1 &#x3D; 3 + 3 &#x3D; 3 + 2 + 1 &#x3D; 3 + 1 + 1 + 1…  我们称这种不同的组合为不同的整数划分。这类问题是经典的组合数学问题。常常要用到动态规划。</p>
+<h1 id="经典整数划分问题"><a href="#经典整数划分问题" class="headerlink" title="经典整数划分问题"></a>经典整数划分问题</h1><p>请问n的最大加数为不超过m的划分共有几种？</p>
+<h2 id="1-各个加数允许相同"><a href="#1-各个加数允许相同" class="headerlink" title="1. 各个加数允许相同"></a>1. 各个加数允许相同</h2><p>分析：</p>
+<ul>
+<li>对于m&gt;n,都有dp[n][m]&#x3D;dp[n][n]</li>
+<li>n划分为m组有两种情况：<ul>
+<li>划分中没有用到m<br>  dp[n][m]&#x3D;dp[n][m-1]</li>
+<li>划分中用了m,相当于n划分为”m+…”<br>  dp[n][m]&#x3D;dp[n-m][m]<br>代码：<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">memset</span>( dp, <span class="number">0</span>, <span class="built_in">sizeof</span>(dp) ); 		</span><br><span class="line">dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>; 		</span><br><span class="line"><span class="keyword">for</span> ( <span class="type">int</span> i = <span class="number">0</span> ; i &lt;= n ; ++ i ) </span><br><span class="line">&#123; 			</span><br><span class="line">    <span class="keyword">for</span> ( <span class="type">int</span> j = <span class="number">1</span> ; j &lt;= n ; ++ j ) &#123; 				</span><br><span class="line">        <span class="keyword">if</span> ( i &gt;= j ) </span><br><span class="line">            dp[i][j] = dp[i-j][j] + dp[i][j]; 				</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            dp[i][j] = dp[i][i]; 			</span><br><span class="line">    &#125; 		</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-各个加数不允许相同"><a href="#2-各个加数不允许相同" class="headerlink" title="2. 各个加数不允许相同"></a>2. 各个加数不允许相同</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">memset</span>( dp, <span class="number">0</span>, <span class="built_in">sizeof</span>(dp) ); 		 </span><br><span class="line">dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>; 		 </span><br><span class="line"><span class="keyword">for</span> ( <span class="type">int</span> i = <span class="number">0</span> ; i &lt;= n ; ++ i )  </span><br><span class="line">&#123; 			     </span><br><span class="line">    <span class="keyword">for</span> ( <span class="type">int</span> j = <span class="number">1</span> ; j &lt;= n ; ++ j ) &#123; 				         </span><br><span class="line">        <span class="keyword">if</span> ( i &gt;= j )              </span><br><span class="line">            dp[i][j] = dp[i-j][j] + dp[i][j<span class="number">-1</span>]; 				         </span><br><span class="line">        <span class="keyword">else</span>              </span><br><span class="line">            dp[i][j] = dp[i][i]; 			     </span><br><span class="line">        &#125; 		 </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+<h2 id="3-将n划分为k个正整数之和"><a href="#3-将n划分为k个正整数之和" class="headerlink" title="3. 将n划分为k个正整数之和"></a>3. 将n划分为k个正整数之和</h2><p>我们会先试图<strong>从总体中拿走一个子问题，将问题的规模削减。</strong> 再上一个问题中，我们把“有没有用到m”作为一个子问题将整体分割。这里我们不妨将<strong>在这k个数中有没有用到1</strong>作为一个子问题。<br>分析：</p>
+<ul>
+<li>如果用到了1：我们先用到了1，然后在试图用k-1个数来组成n-1<br>dp[n][k]&#x3D;dp[n-1][k-1];</li>
+<li>如果没有用到1：这就要保证每个数都&gt;&#x3D;2。<ul>
+<li>从n中拿出k，分给k个数。使他们都为1。</li>
+<li>在都为1的基础上，再划分剩下的n-k，以此保证这k个数都至少为2。<br>dp[n][k]&#x3D;dp[n-k][k]</li>
+</ul>
+</li>
+</ul>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[][] res = <span class="keyword">new</span> <span class="type">int</span>[n+<span class="number">1</span>][n+<span class="number">1</span>];     </span><br><span class="line">res[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;<span class="comment">//递归基条件      </span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)     </span><br><span class="line">&#123;         </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= i; ++j)<span class="comment">//注意i &lt; k的部分忽略掉         </span></span><br><span class="line">    &#123;             </span><br><span class="line">        res[i][j] = res[i<span class="number">-1</span>][j<span class="number">-1</span>] + res[i-j][j];</span><br><span class="line">        <span class="comment">//i == j 时必然为1         </span></span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>algorithm</category>
       </categories>
       <tags>
         <tag>动态规划</tag>
