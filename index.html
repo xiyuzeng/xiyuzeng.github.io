@@ -1,959 +1,1210 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Xiyu Zeng | Researcher</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0d0f14;
-    --bg2: #13161e;
-    --bg3: #1a1e2a;
-    --surface: #1e2330;
-    --border: rgba(255,255,255,0.07);
-    --text: #e8eaf0;
-    --muted: #7a8099;
-    --accent: #5b8dee;
-    --accent2: #3ecfb2;
-    --accent3: #f0a45a;
-    --pink: #e06c8c;
-    --font-serif: 'DM Serif Display', Georgia, serif;
-    --font-sans: 'Outfit', sans-serif;
-    --font-mono: 'DM Mono', monospace;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xiyu Zeng | Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --bg2: #13161e;
+      --bg3: #1a1e2a;
+      --surface: #1e2330;
+      --border: rgba(255, 255, 255, 0.07);
+      --text: #e8eaf0;
+      --muted: #7a8099;
+      --accent: #5b8dee;
+      --accent2: #3ecfb2;
+      --accent3: #f0a45a;
+      --pink: #e06c8c;
+      --font-serif: 'DM Serif Display', Georgia, serif;
+      --font-sans: 'Outfit', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-sans);
-    font-weight: 300;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-  /* ── NOTIFICATION BAR ── */
-  #notif-bar {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    background: linear-gradient(90deg, #1a2a4a 0%, #1a3a2a 50%, #1a2a4a 100%);
-    border-bottom: 1px solid rgba(91,141,238,0.3);
-    padding: 9px 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 13px;
-    transition: transform 0.4s ease;
-  }
-  #notif-bar.hidden { transform: translateY(-100%); }
-  .notif-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--accent2);
-    flex-shrink: 0;
-    animation: blink 2s infinite;
-  }
-  @keyframes blink {
-    0%,100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-  .notif-items {
-    flex: 1;
-    overflow: hidden;
-  }
-  .notif-item {
-    display: none;
-    align-items: center;
-    gap: 8px;
-    color: var(--text);
-    animation: slideIn 0.4s ease;
-  }
-  .notif-item.active { display: flex; }
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateY(-6px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .notif-tag {
-    background: rgba(62,207,178,0.15);
-    color: var(--accent2);
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    flex-shrink: 0;
-  }
-  .notif-tag.pub { background: rgba(91,141,238,0.15); color: var(--accent); }
-  .notif-tag.work { background: rgba(240,164,90,0.15); color: var(--accent3); }
-  .notif-close {
-    background: none;
-    border: none;
-    color: var(--muted);
-    cursor: pointer;
-    font-size: 16px;
-    padding: 0 4px;
-    line-height: 1;
-    transition: color 0.2s;
-    flex-shrink: 0;
-  }
-  .notif-close:hover { color: var(--text); }
-  .notif-nav {
-    display: flex;
-    gap: 4px;
-    flex-shrink: 0;
-  }
-  .notif-nav button {
-    background: none;
-    border: 1px solid rgba(255,255,255,0.1);
-    color: var(--muted);
-    width: 20px; height: 20px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 10px;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s;
-  }
-  .notif-nav button:hover { background: rgba(255,255,255,0.08); color: var(--text); }
+    /* ── NOTIFICATION BAR ── */
+    #notif-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: linear-gradient(90deg, #1a2a4a 0%, #1a3a2a 50%, #1a2a4a 100%);
+      border-bottom: 1px solid rgba(91, 141, 238, 0.3);
+      padding: 9px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      transition: transform 0.4s ease;
+    }
 
-  /* ── CANVAS BACKGROUND ── */
-  #bg-canvas {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
+    #notif-bar.hidden {
+      transform: translateY(-100%);
+    }
 
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 38px; left: 0; right: 0;
-    z-index: 900;
-    padding: 14px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    backdrop-filter: blur(16px);
-    background: rgba(13,15,20,0.6);
-    border-bottom: 1px solid var(--border);
-    transition: top 0.4s ease;
-  }
-  nav.notif-gone { top: 0; }
-  .nav-logo {
-    font-family: var(--font-serif);
-    font-size: 20px;
-    color: var(--text);
-    text-decoration: none;
-    letter-spacing: -0.01em;
-  }
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    transition: color 0.2s;
-    position: relative;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -3px; left: 0; right: 0;
-    height: 1px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transition: transform 0.2s;
-    transform-origin: left;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-links a:hover::after { transform: scaleX(1); }
+    .notif-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent2);
+      flex-shrink: 0;
+      animation: blink 2s infinite;
+    }
 
-  /* ── LAYOUT ── */
-  main {
-    position: relative;
-    z-index: 1;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 32px;
-  }
+    @keyframes blink {
 
-  section { padding: 100px 0 60px; }
-  section:first-child { padding-top: 160px; }
+      0%,
+      100% {
+        opacity: 1;
+      }
 
-  /* ── SECTION LABEL ── */
-  .section-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    max-width: 60px;
-    height: 1px;
-    background: var(--accent);
-    opacity: 0.4;
-  }
-
-  /* ── HERO ── */
-  #hero { padding-top: 180px; padding-bottom: 80px; }
-
-  .hero-greeting {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    color: var(--accent2);
-    margin-bottom: 16px;
-    letter-spacing: 0.08em;
-  }
-
-  .hero-name {
-    font-family: var(--font-serif);
-    font-size: clamp(52px, 8vw, 88px);
-    line-height: 1.0;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
-  .hero-name em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .hero-title {
-    font-size: 18px;
-    color: var(--muted);
-    font-weight: 300;
-    margin-bottom: 28px;
-  }
-  .hero-title span {
-    color: var(--accent3);
-    font-weight: 500;
-  }
-
-  .hero-desc {
-    font-size: 15px;
-    color: var(--muted);
-    max-width: 540px;
-    line-height: 1.9;
-    margin-bottom: 36px;
-  }
-
-  .hero-links {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 11px 24px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 400;
-    text-decoration: none;
-    transition: all 0.2s;
-    letter-spacing: 0.02em;
-  }
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    border: 1px solid var(--accent);
-  }
-  .btn-primary:hover { background: #4a7de0; transform: translateY(-1px); }
-  .btn-outline {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
-  .btn-outline:hover { background: var(--surface); border-color: rgba(255,255,255,0.15); }
-
-  /* ── INTEREST TAGS ── */
-  .interest-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 32px;
-  }
-  .tag {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    padding: 5px 12px;
-    border-radius: 4px;
-    border: 1px solid;
-    letter-spacing: 0.03em;
-  }
-  .tag-blue { border-color: rgba(91,141,238,0.4); color: #89adf5; background: rgba(91,141,238,0.08); }
-  .tag-green { border-color: rgba(62,207,178,0.4); color: #6de4cc; background: rgba(62,207,178,0.08); }
-  .tag-orange { border-color: rgba(240,164,90,0.4); color: #f5b97a; background: rgba(240,164,90,0.08); }
-  .tag-pink { border-color: rgba(224,108,140,0.4); color: #e890a8; background: rgba(224,108,140,0.08); }
-
-  /* ── ABOUT / STATS ── */
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-top: 32px;
-  }
-  .stat-box {
-    background: var(--bg2);
-    padding: 28px 24px;
-    text-align: center;
-  }
-  .stat-num {
-    font-family: var(--font-serif);
-    font-size: 42px;
-    color: var(--accent);
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-  .stat-label {
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 0.03em;
-  }
-
-  /* ── PUBLICATIONS ── */
-  .pub-list { display: flex; flex-direction: column; gap: 20px; margin-top: 8px; }
-
-  .pub-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 24px 28px;
-    transition: all 0.25s;
-    position: relative;
-    overflow: hidden;
-  }
-  .pub-card::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-    background: var(--accent);
-    opacity: 0;
-    transition: opacity 0.25s;
-  }
-  .pub-card:hover { border-color: rgba(91,141,238,0.25); background: var(--bg3); }
-  .pub-card:hover::before { opacity: 1; }
-
-  .pub-venue {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--accent2);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 10px;
-  }
-  .pub-badge {
-    background: rgba(62,207,178,0.12);
-    border: 1px solid rgba(62,207,178,0.25);
-    padding: 2px 7px;
-    border-radius: 3px;
-    font-size: 10px;
-  }
-  .pub-badge.q1 { color: #f0a45a; background: rgba(240,164,90,0.12); border-color: rgba(240,164,90,0.25); }
-  .pub-badge.major { color: var(--pink); background: rgba(224,108,140,0.12); border-color: rgba(224,108,140,0.25); }
-
-  .pub-title {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.5;
-    margin-bottom: 8px;
-  }
-  .pub-authors {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-  .pub-authors strong { color: var(--accent); font-weight: 500; }
-
-  /* ── EXPERIENCE ── */
-  .timeline { position: relative; padding-left: 24px; }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 8px; bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom, var(--accent) 0%, transparent 100%);
-    opacity: 0.3;
-  }
-  .timeline-item { position: relative; margin-bottom: 48px; }
-  .timeline-dot {
-    position: absolute;
-    left: -30px; top: 6px;
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    background: var(--bg);
-    border: 2px solid var(--accent);
-    transition: background 0.2s;
-  }
-  .timeline-item:hover .timeline-dot { background: var(--accent); }
-
-  .timeline-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
-  }
-  .timeline-org {
-    font-weight: 500;
-    font-size: 15px;
-    color: var(--text);
-  }
-  .timeline-period {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-    padding: 2px 8px;
-    background: var(--surface);
-    border-radius: 4px;
-  }
-  .timeline-role {
-    font-size: 13px;
-    color: var(--accent3);
-    margin-bottom: 10px;
-    font-weight: 400;
-  }
-  .timeline-desc {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.8;
-  }
-  .timeline-desc li { margin-bottom: 4px; padding-left: 4px; }
-
-  /* ── SKILLS ── */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-    margin-top: 8px;
-  }
-  .skill-group {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px 20px;
-    transition: border-color 0.2s;
-  }
-  .skill-group:hover { border-color: rgba(91,141,238,0.2); }
-  .skill-group-title {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-  .skill-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .skill-pill {
-    font-size: 12px;
-    padding: 4px 10px;
-    background: var(--surface);
-    border-radius: 4px;
-    color: var(--text);
-    font-weight: 300;
-  }
-
-  /* ── CONTACT ── */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 8px;
-  }
-  .contact-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 22px 24px;
-    text-decoration: none;
-    color: var(--text);
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .contact-card:hover { background: var(--bg3); border-color: rgba(91,141,238,0.25); transform: translateY(-2px); }
-  .contact-icon {
-    width: 42px; height: 42px;
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-  .contact-label { font-size: 13px; color: var(--muted); margin-bottom: 2px; }
-  .contact-value { font-size: 14px; font-weight: 400; }
-
-  /* ── FOOTER ── */
-  footer {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 48px 32px;
-    border-top: 1px solid var(--border);
-    font-size: 13px;
-    color: var(--muted);
-    font-family: var(--font-mono);
-  }
-
-  /* ── SCROLL REVEAL ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  @media (max-width: 600px) {
-    nav { padding: 12px 20px; }
-    .nav-links { gap: 20px; }
-    main { padding: 0 20px; }
-    .stats-row { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
-    #hero { padding-top: 140px; }
-  }
-</style>
-</head>
-<body>
-
-<!-- NOTIFICATION BAR -->
-<div id="notif-bar">
-  <div class="notif-dot"></div>
-  <div class="notif-items">
-    <div class="notif-item active" data-idx="0">
-      <span class="notif-tag pub">📄 Publication</span>
-      <span>New paper accepted in <em>Science China Information Sciences</em> (2026) — Fault-tolerant Control for AI-Model Network</span>
-    </div>
-    <div class="notif-item" data-idx="1">
-      <span class="notif-tag work">💼 Position</span>
-      <span>Currently a Research Assistant at Jinan University, working on AI-ModelNet paradigm</span>
-    </div>
-    <div class="notif-item" data-idx="2">
-      <span class="notif-tag">🏆 Award</span>
-      <span>Received National Scholarship for Graduate Students (Top 2%) — Fall 2024</span>
-    </div>
-    <div class="notif-item" data-idx="3">
-      <span class="notif-tag pub">📄 Patent</span>
-      <span>Patent on Stackelberg Game-based incentive mechanism for privacy-preserving crowdsensing — under review</span>
-    </div>
-  </div>
-  <div class="notif-nav">
-    <button id="notif-prev">&#8249;</button>
-    <button id="notif-next">&#8250;</button>
-  </div>
-  <button class="notif-close" id="notif-close">✕</button>
-</div>
-
-<!-- PARTICLE CANVAS -->
-<canvas id="bg-canvas"></canvas>
-
-<!-- NAV -->
-<nav id="navbar">
-  <a href="#hero" class="nav-logo">X. Zeng</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#publications">Publications</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<main>
-
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-greeting reveal">✦ &nbsp;Hello, I'm</div>
-    <h1 class="hero-name reveal" style="transition-delay:0.1s">Xiyu <em>Zeng</em></h1>
-    <p class="hero-title reveal" style="transition-delay:0.2s">
-      M.Sc. Researcher · <span>AI &amp; Multi-Agent Systems</span> · Jinan University
-    </p>
-    <p class="hero-desc reveal" style="transition-delay:0.3s">
-      I build privacy-preserving mechanisms, multi-LLM collaborative systems, and on-device AI applications. 
-      My research sits at the intersection of mobile crowdsensing, local differential privacy, and the emerging AI-Model Network paradigm.
-    </p>
-    <div class="hero-links reveal" style="transition-delay:0.4s">
-      <a href="https://xiyuzeng.github.io" class="btn btn-primary" target="_blank">🌐 Homepage</a>
-      <a href="https://scholar.google.com" class="btn btn-outline" target="_blank">📚 Google Scholar</a>
-      <a href="https://github.com/xiyuzeng" class="btn btn-outline" target="_blank">⌥ GitHub</a>
-      <a href="mailto:xyzeng@stu2025.jnu.edu.cn" class="btn btn-outline">✉ Email</a>
-    </div>
-    <div class="interest-tags reveal" style="transition-delay:0.5s">
-      <span class="tag tag-blue">Artificial Intelligence</span>
-      <span class="tag tag-green">Multi-Agent Systems</span>
-      <span class="tag tag-orange">Mobile Computing</span>
-      <span class="tag tag-pink">Privacy &amp; Security</span>
-      <span class="tag tag-blue">Large Language Models</span>
-      <span class="tag tag-green">Differential Privacy</span>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-label reveal">01 &nbsp; About</div>
-    <h2 class="reveal" style="font-family:var(--font-serif);font-size:36px;color:var(--text);margin-bottom:20px;font-weight:400;transition-delay:0.05s">A bit about me</h2>
-    <p class="reveal" style="font-size:15px;color:var(--muted);max-width:680px;line-height:1.9;transition-delay:0.1s">
-      I'm a graduate researcher at Jinan University, Guangzhou, with a background in Geographic Information Systems 
-      (B.E., Southwest University of Science and Technology, 2021). My graduate work spans privacy-preserving 
-      data collection in mobile crowdsensing, multi-model AI collaboration, and reinforcement learning-based topology optimization. 
-      Outside research, I'm into swimming, rock climbing, music, and painting.
-    </p>
-    <div class="stats-row reveal" style="transition-delay:0.2s">
-      <div class="stat-box">
-        <div class="stat-num">4</div>
-        <div class="stat-label">Published / Accepted Papers</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">1</div>
-        <div class="stat-label">Patent (Under Review)</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">9.2</div>
-        <div class="stat-label">Impact Factor (IEEE TMC)</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PUBLICATIONS -->
-  <section id="publications">
-    <div class="section-label reveal">02 &nbsp; Publications</div>
-    <h2 class="reveal" style="font-family:var(--font-serif);font-size:36px;color:var(--text);margin-bottom:28px;font-weight:400;transition-delay:0.05s">Research Output</h2>
-
-    <div class="pub-list">
-
-      <div class="pub-card reveal">
-        <div class="pub-venue">
-          IEEE Transactions on Mobile Computing
-          <span class="pub-badge q1">Q1 · IF 9.2</span>
-        </div>
-        <div class="pub-title">Pattern-sensitive Local Differential Privacy for Finite-Range Time-series Data in Mobile Crowdsensing</div>
-        <div class="pub-authors">Z. Li, <strong>X. Zeng</strong>, Y. Xiao, C. Li, W. Wu and H. Liu · doi: 10.1109/TMC.2024.3445973</div>
-      </div>
-
-      <div class="pub-card reveal" style="transition-delay:0.08s">
-        <div class="pub-venue">Journal of Computer Research and Development</div>
-        <div class="pub-title">AI-Model Network: Concept, Current State and Future</div>
-        <div class="pub-authors">Z. Li, <strong>X. Zeng</strong>, J. Wang, Y. Xiao, Z. Liu, J. Wu, J. Lai, J. Huang, S. Long · DOI: 10.7544/issn1000-1239.202550223</div>
-      </div>
-
-      <div class="pub-card reveal" style="transition-delay:0.12s">
-        <div class="pub-venue">Acta Electronica Sinica</div>
-        <div class="pub-title">Multi-Model Serial and Parallel Collaborative Inference in AI-ModelNet</div>
-        <div class="pub-authors">Z. Liu, Z. Li, J. Wang, Y. Xiao, <strong>X. Zeng</strong>, J. Li, G. Mo · Vol. 53(11): 3817–3835, 2025</div>
-      </div>
-
-      <div class="pub-card reveal" style="transition-delay:0.16s">
-        <div class="pub-venue">
-          Science China Information Sciences
-          <span class="pub-badge major">Major · 2026</span>
-        </div>
-        <div class="pub-title">Fault-tolerant Control for AI-Model Network via Cooperative Game Theory</div>
-        <div class="pub-authors">Z. Li, X. Zhang, <strong>X. Zeng</strong></div>
-      </div>
-
-      <div class="pub-card reveal" style="transition-delay:0.20s">
-        <div class="pub-venue">
-          Patent
-          <span class="pub-badge" style="color:var(--accent2);background:rgba(62,207,178,0.12);border-color:rgba(62,207,178,0.25)">Under Review</span>
-        </div>
-        <div class="pub-title">An Incentive Mechanism based on Stackelberg Game for Personalised Privacy-Protecting in Crowdsensing</div>
-        <div class="pub-authors">Z. Li, <strong>X. Zeng</strong>, S. Long, T. Pei · Patent No. 202311727206.X</div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="section-label reveal">03 &nbsp; Experience</div>
-    <h2 class="reveal" style="font-family:var(--font-serif);font-size:36px;color:var(--text);margin-bottom:36px;font-weight:400;transition-delay:0.05s">Professional Journey</h2>
-
-    <div class="timeline reveal" style="transition-delay:0.1s">
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-meta">
-          <span class="timeline-org">Jinan University, School of Science & Technology</span>
-          <span class="timeline-period">2025.09 – Present</span>
-        </div>
-        <div class="timeline-role">Research Assistant · Prof. Zhetao Li</div>
-        <ul class="timeline-desc" style="list-style:none;padding:0">
-          <li>→ Investigating the AI-ModelNet paradigm: communication, collaboration, and security in heterogeneous multi-model environments</li>
-          <li>→ Teaching Assistant for undergraduate embedded development course (BearPi + Huawei LiteOS / Cloud IoT)</li>
-          <li>→ Designed multi-LLM collaborative reasoning and repetition suppression mechanisms</li>
-          <li>→ Built RL + GNN-based task-adaptive topology generator for dynamic link optimization</li>
-          <li>→ Developing on-device dietary assistant App with RAG over China Food Composition Table</li>
-        </ul>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-meta">
-          <span class="timeline-org">XPeng Motors</span>
-          <span class="timeline-period">2025.06 – 2025.09</span>
-        </div>
-        <div class="timeline-role">AI Platform Intern · Powertrain Center, Guangzhou</div>
-        <ul class="timeline-desc" style="list-style:none;padding:0">
-          <li>→ Designed and developed a department-level AI Q&A platform based on the Qwen3 model</li>
-          <li>→ Integrated Knowledge Graph (KG) + Retrieval-Augmented Generation (RAG) for precise knowledge retrieval</li>
-          <li>→ Significantly improved business decision-making efficiency via intelligent test-data–driven solution generation</li>
-        </ul>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-meta">
-          <span class="timeline-org">Jinan University (Graduate)</span>
-          <span class="timeline-period">2022.08 – 2025.06</span>
-        </div>
-        <div class="timeline-role">M.Sc. — Computer Software and Theory · GPA 3.45/4</div>
-        <ul class="timeline-desc" style="list-style:none;padding:0">
-          <li>→ National Natural Science Foundation project: deep data acquisition in crowdsensing networks</li>
-          <li>→ Proposed pattern-sensitive LDP mechanism for finite-range time-series data → IEEE TMC publication</li>
-          <li>→ Designed time-dimension perturbation for versatile time-series analysis (paper in preparation)</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="section-label reveal">04 &nbsp; Skills</div>
-    <h2 class="reveal" style="font-family:var(--font-serif);font-size:36px;color:var(--text);margin-bottom:28px;font-weight:400;transition-delay:0.05s">Technical Stack</h2>
-
-    <div class="skills-grid reveal" style="transition-delay:0.1s">
-      <div class="skill-group">
-        <div class="skill-group-title">Languages</div>
-        <div class="skill-items">
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">C/C++</span>
-          <span class="skill-pill">Java</span>
-          <span class="skill-pill">MATLAB</span>
-          <span class="skill-pill">JavaScript</span>
-          <span class="skill-pill">HTML/CSS</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">AI / ML</div>
-        <div class="skill-items">
-          <span class="skill-pill">LLM Deployment</span>
-          <span class="skill-pill">RAG</span>
-          <span class="skill-pill">RL</span>
-          <span class="skill-pill">GNN</span>
-          <span class="skill-pill">Knowledge Graph</span>
-          <span class="skill-pill">Qwen3</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Research</div>
-        <div class="skill-items">
-          <span class="skill-pill">Differential Privacy</span>
-          <span class="skill-pill">Crowdsensing</span>
-          <span class="skill-pill">Game Theory</span>
-          <span class="skill-pill">Mobile Computing</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Systems</div>
-        <div class="skill-items">
-          <span class="skill-pill">Embedded (LiteOS)</span>
-          <span class="skill-pill">Huawei Cloud IoT</span>
-          <span class="skill-pill">On-Device AI</span>
-          <span class="skill-pill">BearPi Board</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-label reveal">05 &nbsp; Contact</div>
-    <h2 class="reveal" style="font-family:var(--font-serif);font-size:36px;color:var(--text);margin-bottom:8px;font-weight:400;transition-delay:0.05s">Get in Touch</h2>
-    <p class="reveal" style="font-size:15px;color:var(--muted);margin-bottom:28px;transition-delay:0.1s">Interested in collaboration or have questions about my research? Feel free to reach out.</p>
-
-    <div class="contact-grid reveal" style="transition-delay:0.15s">
-      <a href="mailto:xyzeng@stu2025.jnu.edu.cn" class="contact-card">
-        <div class="contact-icon" style="background:rgba(91,141,238,0.12);">✉️</div>
-        <div>
-          <div class="contact-label">Email</div>
-          <div class="contact-value">xyzeng@stu2025.jnu.edu.cn</div>
-        </div>
-      </a>
-      <a href="https://xiyuzeng.github.io" target="_blank" class="contact-card">
-        <div class="contact-icon" style="background:rgba(62,207,178,0.12);">🌐</div>
-        <div>
-          <div class="contact-label">Homepage</div>
-          <div class="contact-value">xiyuzeng.github.io</div>
-        </div>
-      </a>
-      <a href="https://github.com/xiyuzeng" target="_blank" class="contact-card">
-        <div class="contact-icon" style="background:rgba(255,255,255,0.05);">⌥</div>
-        <div>
-          <div class="contact-label">GitHub</div>
-          <div class="contact-value">github.com/xiyuzeng</div>
-        </div>
-      </a>
-      <a href="https://scholar.google.com" target="_blank" class="contact-card">
-        <div class="contact-icon" style="background:rgba(240,164,90,0.12);">📚</div>
-        <div>
-          <div class="contact-label">Google Scholar</div>
-          <div class="contact-value">View Publications</div>
-        </div>
-      </a>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <span style="font-family:var(--font-mono);letter-spacing:0.05em">
-    © 2025 Xiyu Zeng &nbsp;·&nbsp; Built with ❤ &nbsp;·&nbsp; Guangzhou, China
-  </span>
-</footer>
-
-<script>
-// ── PARTICLE BACKGROUND ──
-const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
-let W, H;
-
-function resize() {
-  W = canvas.width = window.innerWidth;
-  H = canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener('resize', resize);
-
-function mkParticle() {
-  return {
-    x: Math.random() * W,
-    y: Math.random() * H,
-    vx: (Math.random() - 0.5) * 0.3,
-    vy: (Math.random() - 0.5) * 0.3,
-    r: Math.random() * 1.5 + 0.5,
-    alpha: Math.random() * 0.5 + 0.1
-  };
-}
-
-for (let i = 0; i < 90; i++) particles.push(mkParticle());
-
-function drawParticles() {
-  ctx.clearRect(0, 0, W, H);
-  particles.forEach(p => {
-    p.x += p.vx; p.y += p.vy;
-    if (p.x < 0) p.x = W;
-    if (p.x > W) p.x = 0;
-    if (p.y < 0) p.y = H;
-    if (p.y > H) p.y = 0;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(91,141,238,${p.alpha})`;
-    ctx.fill();
-  });
-  // Draw connecting lines
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 120) {
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(91,141,238,${0.08 * (1 - dist / 120)})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
+      50% {
+        opacity: 0.3;
       }
     }
-  }
-  requestAnimationFrame(drawParticles);
-}
-drawParticles();
 
-// ── NOTIFICATION ──
-const notifItems = document.querySelectorAll('.notif-item');
-let currentNotif = 0;
-let notifTimer;
+    .notif-items {
+      flex: 1;
+      overflow: hidden;
+    }
 
-function showNotif(idx) {
-  notifItems.forEach(el => el.classList.remove('active'));
-  currentNotif = (idx + notifItems.length) % notifItems.length;
-  notifItems[currentNotif].classList.add('active');
-}
+    .notif-item {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      animation: slideIn 0.4s ease;
+    }
 
-function startNotifCycle() {
-  notifTimer = setInterval(() => showNotif(currentNotif + 1), 4000);
-}
-startNotifCycle();
+    .notif-item.active {
+      display: flex;
+    }
 
-document.getElementById('notif-next').addEventListener('click', () => {
-  clearInterval(notifTimer);
-  showNotif(currentNotif + 1);
-  startNotifCycle();
-});
-document.getElementById('notif-prev').addEventListener('click', () => {
-  clearInterval(notifTimer);
-  showNotif(currentNotif - 1);
-  startNotifCycle();
-});
-document.getElementById('notif-close').addEventListener('click', () => {
-  clearInterval(notifTimer);
-  const bar = document.getElementById('notif-bar');
-  bar.classList.add('hidden');
-  document.getElementById('navbar').classList.add('notif-gone');
-});
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
 
-// ── SCROLL REVEAL ──
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-reveals.forEach(el => observer.observe(el));
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-// Trigger hero immediately
-setTimeout(() => {
-  document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
-}, 100);
-</script>
+    .notif-tag {
+      background: rgba(62, 207, 178, 0.15);
+      color: var(--accent2);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .notif-tag.pub {
+      background: rgba(91, 141, 238, 0.15);
+      color: var(--accent);
+    }
+
+    .notif-tag.work {
+      background: rgba(240, 164, 90, 0.15);
+      color: var(--accent3);
+    }
+
+    .notif-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 16px;
+      padding: 0 4px;
+      line-height: 1;
+      transition: color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .notif-close:hover {
+      color: var(--text);
+    }
+
+    .notif-nav {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .notif-nav button {
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--muted);
+      width: 20px;
+      height: 20px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .notif-nav button:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    /* ── CANVAS BACKGROUND ── */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 38px;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(16px);
+      background: rgba(13, 15, 20, 0.6);
+      border-bottom: 1px solid var(--border);
+      transition: top 0.4s ease;
+    }
+
+    nav.notif-gone {
+      top: 0;
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.2s;
+      transform-origin: left;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* ── LAYOUT ── */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    section {
+      padding: 100px 0 60px;
+    }
+
+    section:first-child {
+      padding-top: 160px;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.4;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      padding-top: 180px;
+      padding-bottom: 80px;
+    }
+
+    .hero-greeting {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--accent2);
+      margin-bottom: 16px;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(52px, 8vw, 88px);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-title {
+      font-size: 18px;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 28px;
+    }
+
+    .hero-title span {
+      color: var(--accent3);
+      font-weight: 500;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.9;
+      margin-bottom: 36px;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 24px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 400;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: #4a7de0;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: var(--surface);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    /* ── INTEREST TAGS ── */
+    .interest-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 4px;
+      border: 1px solid;
+      letter-spacing: 0.03em;
+    }
+
+    .tag-blue {
+      border-color: rgba(91, 141, 238, 0.4);
+      color: #89adf5;
+      background: rgba(91, 141, 238, 0.08);
+    }
+
+    .tag-green {
+      border-color: rgba(62, 207, 178, 0.4);
+      color: #6de4cc;
+      background: rgba(62, 207, 178, 0.08);
+    }
+
+    .tag-orange {
+      border-color: rgba(240, 164, 90, 0.4);
+      color: #f5b97a;
+      background: rgba(240, 164, 90, 0.08);
+    }
+
+    .tag-pink {
+      border-color: rgba(224, 108, 140, 0.4);
+      color: #e890a8;
+      background: rgba(224, 108, 140, 0.08);
+    }
+
+    /* ── ABOUT / STATS ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 32px;
+    }
+
+    .stat-box {
+      background: var(--bg2);
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: var(--font-serif);
+      font-size: 42px;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 8px;
+    }
+
+    .pub-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 28px;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pub-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .pub-card:hover {
+      border-color: rgba(91, 141, 238, 0.25);
+      background: var(--bg3);
+    }
+
+    .pub-card:hover::before {
+      opacity: 1;
+    }
+
+    .pub-venue {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent2);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .pub-badge {
+      background: rgba(62, 207, 178, 0.12);
+      border: 1px solid rgba(62, 207, 178, 0.25);
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-size: 10px;
+    }
+
+    .pub-badge.q1 {
+      color: #f0a45a;
+      background: rgba(240, 164, 90, 0.12);
+      border-color: rgba(240, 164, 90, 0.25);
+    }
+
+    .pub-badge.major {
+      color: var(--pink);
+      background: rgba(224, 108, 140, 0.12);
+      border-color: rgba(224, 108, 140, 0.25);
+    }
+
+    .pub-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .pub-authors {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .pub-authors strong {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ── EXPERIENCE ── */
+    .timeline {
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent) 0%, transparent 100%);
+      opacity: 0.3;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 48px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -30px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      transition: background 0.2s;
+    }
+
+    .timeline-item:hover .timeline-dot {
+      background: var(--accent);
+    }
+
+    .timeline-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .timeline-org {
+      font-weight: 500;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .timeline-period {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      padding: 2px 8px;
+      background: var(--surface);
+      border-radius: 4px;
+    }
+
+    .timeline-role {
+      font-size: 13px;
+      color: var(--accent3);
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+
+    .timeline-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .timeline-desc li {
+      margin-bottom: 4px;
+      padding-left: 4px;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .skill-group {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 20px;
+      transition: border-color 0.2s;
+    }
+
+    .skill-group:hover {
+      border-color: rgba(91, 141, 238, 0.2);
+    }
+
+    .skill-group-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-pill {
+      font-size: 12px;
+      padding: 4px 10px;
+      background: var(--surface);
+      border-radius: 4px;
+      color: var(--text);
+      font-weight: 300;
+    }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .contact-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 24px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .contact-card:hover {
+      background: var(--bg3);
+      border-color: rgba(91, 141, 238, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .contact-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .contact-label {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .contact-value {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 48px 32px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        padding: 12px 20px;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+
+      main {
+        padding: 0 20px;
+      }
+
+      .stats-row {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #hero {
+        padding-top: 140px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NOTIFICATION BAR -->
+  <div id="notif-bar">
+    <div class="notif-dot"></div>
+    <div class="notif-items">
+      <div class="notif-item active" data-idx="0">
+        <span class="notif-tag pub">📄 Publication</span>
+        <span>New paper accepted in <em>Science China Information Sciences</em> (2026) — Fault-tolerant Control for
+          AI-Model Network</span>
+      </div>
+      <div class="notif-item" data-idx="1">
+        <span class="notif-tag work">💼 Position</span>
+        <span>Currently a Research Assistant at Jinan University, working on AI-ModelNet paradigm</span>
+      </div>
+      <div class="notif-item" data-idx="2">
+        <span class="notif-tag">🏆 Award</span>
+        <span>Received National Scholarship for Graduate Students (Top 2%) — Fall 2024</span>
+      </div>
+      <div class="notif-item" data-idx="3">
+        <span class="notif-tag pub">📄 Patent</span>
+        <span>Patent on Stackelberg Game-based incentive mechanism for privacy-preserving crowdsensing — under
+          review</span>
+      </div>
+    </div>
+    <div class="notif-nav">
+      <button id="notif-prev">&#8249;</button>
+      <button id="notif-next">&#8250;</button>
+    </div>
+    <button class="notif-close" id="notif-close">✕</button>
+  </div>
+
+  <!-- PARTICLE CANVAS -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">X. Zeng</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-greeting reveal">✦ &nbsp;Hello, I'm</div>
+      <h1 class="hero-name reveal" style="transition-delay:0.1s">Xiyu <em>Zeng</em></h1>
+      <p class="hero-title reveal" style="transition-delay:0.2s">
+        M.Sc. Researcher · <span>AI &amp; Multi-Agent Systems</span> · Jinan University
+      </p>
+      <p class="hero-desc reveal" style="transition-delay:0.3s">
+        I build privacy-preserving mechanisms, multi-LLM collaborative systems, and on-device AI applications.
+        My research sits at the intersection of mobile crowdsensing, local differential privacy, and the emerging
+        AI-Model Network paradigm.
+      </p>
+      <div class="hero-links reveal" style="transition-delay:0.4s">
+        <a href="https://xiyuzeng.github.io" class="btn btn-primary" target="_blank">🌐 Homepage</a>
+        <a href="https://scholar.google.com/citations?hl=zh-CN&user=EvtsDocAAAAJ" class="btn btn-outline"
+          target="_blank">📚 Google Scholar</a>
+        <a href="https://github.com/xiyuzeng" class="btn btn-outline" target="_blank">⌥ GitHub</a>
+        <a href="mailto:xyzeng@stu2025.jnu.edu.cn" class="btn btn-outline">✉ Email</a>
+      </div>
+      <div class="interest-tags reveal" style="transition-delay:0.5s">
+        <span class="tag tag-blue">Artificial Intelligence</span>
+        <span class="tag tag-green">Multi-Agent Systems</span>
+        <span class="tag tag-orange">Mobile Computing</span>
+        <span class="tag tag-pink">Privacy &amp; Security</span>
+        <span class="tag tag-blue">Large Language Models</span>
+        <span class="tag tag-green">Differential Privacy</span>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-label reveal">01 &nbsp; About</div>
+      <h2 class="reveal"
+        style="font-family:var(--font-serif);font-size:36px;color:var(--text);margin-bottom:20px;font-weight:400;transition-delay:0.05s">
+        A bit about me</h2>
+      <p class="reveal" style="font-size:15px;color:var(--muted);max-width:680px;line-height:1.9;transition-delay:0.1s">
+        I'm a graduate researcher at Jinan University, Guangzhou, with a background in Geographic Information Systems
+        (B.E., Southwest University of Science and Technology, 2021). My graduate work spans privacy-preserving
+        data collection in mobile crowdsensing, multi-model AI collaboration, and reinforcement learning-based topology
+        optimization.
+        Outside research, I'm into swimming, rock climbing, music, and painting.
+      </p>
+      <div class="stats-row reveal" style="transition-delay:0.2s">
+        <div class="stat-box">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Published / Accepted Papers</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">1</div>
+          <div class="stat-label">Patent (Under Review)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">9.2</div>
+          <div class="stat-label">Impact Factor (IEEE TMC)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <div class="section-label reveal">02 &nbsp; Publications</div>
+      <h2 class="reveal"
+        style="font-family:var(--font-serif);font-size:36px;color:var(--text);margin-bottom:28px;font-weight:400;transition-delay:0.05s">
+        Research Output</h2>
+
+      <div class="pub-list">
+
+        <div class="pub-card reveal">
+          <div class="pub-venue">
+            IEEE Transactions on Mobile Computing
+            <span class="pub-badge q1">Q1 · IF 9.2</span>
+          </div>
+          <div class="pub-title">Pattern-sensitive Local Differential Privacy for Finite-Range Time-series Data in
+            Mobile Crowdsensing</div>
+          <div class="pub-authors">Z. Li, <strong>X. Zeng</strong>, Y. Xiao, C. Li, W. Wu and H. Liu · doi:
+            10.1109/TMC.2024.3445973</div>
+        </div>
+
+        <div class="pub-card reveal" style="transition-delay:0.08s">
+          <div class="pub-venue">Journal of Computer Research and Development</div>
+          <div class="pub-title">AI-Model Network: Concept, Current State and Future</div>
+          <div class="pub-authors">Z. Li, <strong>X. Zeng</strong>, J. Wang, Y. Xiao, Z. Liu, J. Wu, J. Lai, J. Huang,
+            S. Long · DOI: 10.7544/issn1000-1239.202550223</div>
+        </div>
+
+        <div class="pub-card reveal" style="transition-delay:0.12s">
+          <div class="pub-venue">Acta Electronica Sinica</div>
+          <div class="pub-title">Multi-Model Serial and Parallel Collaborative Inference in AI-ModelNet</div>
+          <div class="pub-authors">Z. Liu, Z. Li, J. Wang, Y. Xiao, <strong>X. Zeng</strong>, J. Li, G. Mo · Vol.
+            53(11): 3817–3835, 2025</div>
+        </div>
+
+        <div class="pub-card reveal" style="transition-delay:0.16s">
+          <div class="pub-venue">
+            Science China Information Sciences
+            <span class="pub-badge major">Major · 2026</span>
+          </div>
+          <div class="pub-title">Fault-tolerant Control for AI-Model Network via Cooperative Game Theory</div>
+          <div class="pub-authors">Z. Li, X. Zhang, <strong>X. Zeng</strong></div>
+        </div>
+
+        <div class="pub-card reveal" style="transition-delay:0.20s">
+          <div class="pub-venue">
+            Patent
+            <span class="pub-badge"
+              style="color:var(--accent2);background:rgba(62,207,178,0.12);border-color:rgba(62,207,178,0.25)">Under
+              Review</span>
+          </div>
+          <div class="pub-title">An Incentive Mechanism based on Stackelberg Game for Personalised Privacy-Protecting in
+            Crowdsensing</div>
+          <div class="pub-authors">Z. Li, <strong>X. Zeng</strong>, S. Long, T. Pei · Patent No. 202311727206.X</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-label reveal">03 &nbsp; Experience</div>
+      <h2 class="reveal"
+        style="font-family:var(--font-serif);font-size:36px;color:var(--text);margin-bottom:36px;font-weight:400;transition-delay:0.05s">
+        Professional Journey</h2>
+
+      <div class="timeline reveal" style="transition-delay:0.1s">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-meta">
+            <span class="timeline-org">Jinan University, School of Science & Technology</span>
+            <span class="timeline-period">2025.09 – Present</span>
+          </div>
+          <div class="timeline-role">Research Assistant · Prof. Zhetao Li</div>
+          <ul class="timeline-desc" style="list-style:none;padding:0">
+            <li>→ Investigating the AI-ModelNet paradigm: communication, collaboration, and security in heterogeneous
+              multi-model environments</li>
+            <li>→ Teaching Assistant for undergraduate embedded development course (BearPi + Huawei LiteOS / Cloud IoT)
+            </li>
+            <li>→ Designed multi-LLM collaborative reasoning and repetition suppression mechanisms</li>
+            <li>→ Built RL + GNN-based task-adaptive topology generator for dynamic link optimization</li>
+            <li>→ Developing on-device dietary assistant App with RAG over China Food Composition Table</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-meta">
+            <span class="timeline-org">XPeng Motors</span>
+            <span class="timeline-period">2025.06 – 2025.09</span>
+          </div>
+          <div class="timeline-role">AI Platform Intern · Powertrain Center, Guangzhou</div>
+          <ul class="timeline-desc" style="list-style:none;padding:0">
+            <li>→ Designed and developed a department-level AI Q&A platform based on the Qwen3 model</li>
+            <li>→ Integrated Knowledge Graph (KG) + Retrieval-Augmented Generation (RAG) for precise knowledge retrieval
+            </li>
+            <li>→ Significantly improved business decision-making efficiency via intelligent test-data–driven solution
+              generation</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-meta">
+            <span class="timeline-org">Jinan University (Graduate)</span>
+            <span class="timeline-period">2022.08 – 2025.06</span>
+          </div>
+          <div class="timeline-role">M.Sc. — Computer Software and Theory · GPA 3.45/4</div>
+          <ul class="timeline-desc" style="list-style:none;padding:0">
+            <li>→ National Natural Science Foundation project: deep data acquisition in crowdsensing networks</li>
+            <li>→ Proposed pattern-sensitive LDP mechanism for finite-range time-series data → IEEE TMC publication</li>
+            <li>→ Designed time-dimension perturbation for versatile time-series analysis (paper in preparation)</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-label reveal">04 &nbsp; Skills</div>
+      <h2 class="reveal"
+        style="font-family:var(--font-serif);font-size:36px;color:var(--text);margin-bottom:28px;font-weight:400;transition-delay:0.05s">
+        Technical Stack</h2>
+
+      <div class="skills-grid reveal" style="transition-delay:0.1s">
+        <div class="skill-group">
+          <div class="skill-group-title">Languages</div>
+          <div class="skill-items">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">C/C++</span>
+            <span class="skill-pill">Java</span>
+            <span class="skill-pill">MATLAB</span>
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">HTML/CSS</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">AI / ML</div>
+          <div class="skill-items">
+            <span class="skill-pill">LLM Deployment</span>
+            <span class="skill-pill">RAG</span>
+            <span class="skill-pill">RL</span>
+            <span class="skill-pill">GNN</span>
+            <span class="skill-pill">Knowledge Graph</span>
+            <span class="skill-pill">Qwen3</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Research</div>
+          <div class="skill-items">
+            <span class="skill-pill">Differential Privacy</span>
+            <span class="skill-pill">Crowdsensing</span>
+            <span class="skill-pill">Game Theory</span>
+            <span class="skill-pill">Mobile Computing</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Systems</div>
+          <div class="skill-items">
+            <span class="skill-pill">Embedded (LiteOS)</span>
+            <span class="skill-pill">Huawei Cloud IoT</span>
+            <span class="skill-pill">On-Device AI</span>
+            <span class="skill-pill">BearPi Board</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-label reveal">05 &nbsp; Contact</div>
+      <h2 class="reveal"
+        style="font-family:var(--font-serif);font-size:36px;color:var(--text);margin-bottom:8px;font-weight:400;transition-delay:0.05s">
+        Get in Touch</h2>
+      <p class="reveal" style="font-size:15px;color:var(--muted);margin-bottom:28px;transition-delay:0.1s">Interested in
+        collaboration or have questions about my research? Feel free to reach out.</p>
+
+      <div class="contact-grid reveal" style="transition-delay:0.15s">
+        <a href="mailto:xyzeng@stu2025.jnu.edu.cn" class="contact-card">
+          <div class="contact-icon" style="background:rgba(91,141,238,0.12);">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">xyzeng@stu2025.jnu.edu.cn</div>
+          </div>
+        </a>
+        <a href="https://xiyuzeng.github.io" target="_blank" class="contact-card">
+          <div class="contact-icon" style="background:rgba(62,207,178,0.12);">🌐</div>
+          <div>
+            <div class="contact-label">Homepage</div>
+            <div class="contact-value">xiyuzeng.github.io</div>
+          </div>
+        </a>
+        <a href="https://github.com/xiyuzeng" target="_blank" class="contact-card">
+          <div class="contact-icon" style="background:rgba(255,255,255,0.05);">⌥</div>
+          <div>
+            <div class="contact-label">GitHub</div>
+            <div class="contact-value">github.com/xiyuzeng</div>
+          </div>
+        </a>
+        <a href="https://scholar.google.com/citations?hl=zh-CN&user=EvtsDocAAAAJ" target="_blank" class="contact-card">
+          <div class="contact-icon" style="background:rgba(240,164,90,0.12);">📚</div>
+          <div>
+            <div class="contact-label">Google Scholar</div>
+            <div class="contact-value">View Publications</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span style="font-family:var(--font-mono);letter-spacing:0.05em">
+      © 2025 Xiyu Zeng &nbsp;·&nbsp; Built with ❤ &nbsp;·&nbsp; Guangzhou, China
+    </span>
+  </footer>
+
+  <script>
+    // ── PARTICLE BACKGROUND ──
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let W, H;
+
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function mkParticle() {
+      return {
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        r: Math.random() * 1.5 + 0.5,
+        alpha: Math.random() * 0.5 + 0.1
+      };
+    }
+
+    for (let i = 0; i < 90; i++) particles.push(mkParticle());
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = W;
+        if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H;
+        if (p.y > H) p.y = 0;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(91,141,238,${p.alpha})`;
+        ctx.fill();
+      });
+      // Draw connecting lines
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(91,141,238,${0.08 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+
+    // ── NOTIFICATION ──
+    const notifItems = document.querySelectorAll('.notif-item');
+    let currentNotif = 0;
+    let notifTimer;
+
+    function showNotif(idx) {
+      notifItems.forEach(el => el.classList.remove('active'));
+      currentNotif = (idx + notifItems.length) % notifItems.length;
+      notifItems[currentNotif].classList.add('active');
+    }
+
+    function startNotifCycle() {
+      notifTimer = setInterval(() => showNotif(currentNotif + 1), 4000);
+    }
+    startNotifCycle();
+
+    document.getElementById('notif-next').addEventListener('click', () => {
+      clearInterval(notifTimer);
+      showNotif(currentNotif + 1);
+      startNotifCycle();
+    });
+    document.getElementById('notif-prev').addEventListener('click', () => {
+      clearInterval(notifTimer);
+      showNotif(currentNotif - 1);
+      startNotifCycle();
+    });
+    document.getElementById('notif-close').addEventListener('click', () => {
+      clearInterval(notifTimer);
+      const bar = document.getElementById('notif-bar');
+      bar.classList.add('hidden');
+      document.getElementById('navbar').classList.add('notif-gone');
+    });
+
+    // ── SCROLL REVEAL ──
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Trigger hero immediately
+    setTimeout(() => {
+      document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
+    }, 100);
+  </script>
 
 </body>
+
 </html>
